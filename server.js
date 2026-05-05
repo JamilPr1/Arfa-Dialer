@@ -241,7 +241,9 @@ app.get("/api/webphone/config", async (req, res) => {
   if (!requireAppKey(req)) return res.status(401).json({ ok: false, error: "Unauthorized" });
   if (!CONFIG_OK) return res.status(500).json({ ok: false, error: "Server not configured (.env missing keys)" });
 
-  const agent = Number(req.query.agent || 0);
+  const rawAgent = req.query.agent;
+  const parsedAgent = Number(Array.isArray(rawAgent) ? rawAgent[0] : rawAgent);
+  const agent = Number.isFinite(parsedAgent) ? parsedAgent : 0;
   const allSecrets =
     WEBPHONE_NUMBERED_SECRETS.length > 0
       ? WEBPHONE_NUMBERED_SECRETS

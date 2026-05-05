@@ -16,7 +16,9 @@ module.exports = async (req, res) => {
   }
 
   const url = new URL(req.url, "http://localhost");
-  const agent = Number(url.searchParams.get("agent") || 0);
+  const rawAgent = url.searchParams.get("agent");
+  const parsedAgent = Number(rawAgent);
+  const agent = Number.isFinite(parsedAgent) ? parsedAgent : 0;
 
   try {
     await mc.getAccessToken();
