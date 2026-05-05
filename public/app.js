@@ -101,6 +101,19 @@ function setWebphoneState(s) {
   webphoneStateEl.textContent = s || "";
 }
 
+async function ensureMicrophonePermission() {
+  if (!navigator?.mediaDevices?.getUserMedia) return { ok: false, reason: "Browser does not support getUserMedia()" };
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    // immediately stop; we only needed the permission prompt
+    for (const t of stream.getTracks()) t.stop();
+    return { ok: true };
+  } catch (e) {
+    const msg = e?.message || String(e);
+    return { ok: false, reason: msg };
+  }
+}
+
 function setActiveLineInfo() {
   const slot = activeUserSlot;
   const userLabel = slot === null ? "User: (not started)" : `User: ${slot + 1}`;
@@ -155,6 +168,14 @@ async function webphoneInit() {
   setWebphoneState("Loading config…");
   const cfg = await api(`/api/webphone/config?agent=${encodeURIComponent(agent)}`);
   if (!cfg?.ok) throw new Error("Failed to get WebPhone config");
+
+  setWebphoneState("Requesting microphone permission…");
+  const mic = await ensureMicrophonePermission();
+  if (!mic.ok) {
+    setWebphoneState(`Microphone blocked. Allow mic permission, then click Start again.`);
+    log({ event: "mic_permission_denied", reason: mic.reason });
+    return;
+  }
 
   setWebphoneState("Loading WebPhone SDK…");
   await loadScriptOnce(cfg.sdkScriptUrl);

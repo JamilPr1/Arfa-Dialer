@@ -128,7 +128,7 @@ function getWebphoneSecrets() {
     .map((s) => String(s || "").trim())
     .filter(Boolean);
   const secrets = numbered.length > 0 ? numbered : [first, ...rest].filter(Boolean);
-  return secrets.length > 0 ? secrets : [API_SECRET_KEY].filter(Boolean);
+  return secrets;
 }
 
 module.exports = {

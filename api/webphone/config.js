@@ -24,6 +24,17 @@ module.exports = async (req, res) => {
     const sdkScriptUrl = `${mc.trimSlash(tokenBaseUrl)}/sdk/mightycall.webphone.sdk.js`;
 
     const secrets = mc.getWebphoneSecrets();
+    if (!secrets || secrets.length === 0) {
+      res.statusCode = 500;
+      res.end(
+        JSON.stringify({
+          ok: false,
+          error:
+            "WebPhone is not configured. Set MIGHTYCALL_WEBPHONE_SECRET_KEY (and optionally MIGHTYCALL_WEBPHONE_SECRET_KEYS) in Vercel env vars.",
+        }),
+      );
+      return;
+    }
     const safeAgent = Math.max(0, Math.min(secrets.length - 1, agent));
     const password = secrets[safeAgent];
 

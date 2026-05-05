@@ -210,13 +210,12 @@ select.select {
 }
 
 .webphone-hidden {
-  position: fixed;
-  left: -10000px;
-  top: -10000px;
+  /* Keep it in-DOM (not offscreen) so audio/iframes behave consistently */
   width: 1px;
   height: 1px;
   min-height: 1px;
-  opacity: 0;
+  opacity: 0.001;
+  overflow: hidden;
   pointer-events: none;
 }
 

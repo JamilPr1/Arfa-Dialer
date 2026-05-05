@@ -246,6 +246,13 @@ app.get("/api/webphone/config", async (req, res) => {
     WEBPHONE_NUMBERED_SECRETS.length > 0
       ? WEBPHONE_NUMBERED_SECRETS
       : [WEBPHONE_SECRET_KEY, ...WEBPHONE_SECRET_KEYS].filter(Boolean);
+  if (allSecrets.length === 0) {
+    return res.status(500).json({
+      ok: false,
+      error:
+        "WebPhone is not configured. Set MIGHTYCALL_WEBPHONE_SECRET_KEY (and optionally MIGHTYCALL_WEBPHONE_SECRET_KEYS).",
+    });
+  }
   const password = allSecrets[Math.max(0, Math.min(allSecrets.length - 1, agent))] || WEBPHONE_SECRET_KEY;
 
   try {
