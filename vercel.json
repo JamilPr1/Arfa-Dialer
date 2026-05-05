@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "^/$", "dest": "/public/index.html" },
+    { "src": "^/api/health$", "dest": "/api/health" },
+    { "src": "^/api/auth/test$", "dest": "/api/auth/test" },
+    { "src": "^/api/phonenumbers$", "dest": "/api/phonenumbers" },
+    { "src": "^/api/webphone/config$", "dest": "/api/webphone/config" },
+    { "src": "^(.*)$", "dest": "/public$1" }
+  ]
+}
+

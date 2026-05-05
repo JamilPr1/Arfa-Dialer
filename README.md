@@ -26,7 +26,8 @@ This app keeps credentials server-side in a local `.env` file.
 2. Fill:
 
 - `MIGHTYCALL_API_KEY`
-- `MIGHTYCALL_SECRET_KEY` (your **User Key** or extension number, depending on your account setup)
+- `MIGHTYCALL_API_SECRET_KEY` (your **User Key** or extension number, depending on your account setup)
+- `MIGHTYCALL_WEBPHONE_SECRET_KEY` / `MIGHTYCALL_WEBPHONE_SECRET_KEYS` for browser phone user slots
 
 3. Install and run:
 
@@ -36,6 +37,17 @@ npm run dev
 ```
 
 Open `http://localhost:5173`.
+
+## Deploy to Vercel
+
+This repo includes **serverless API routes** under `api/` so Vercel can serve:
+
+- `GET /api/health`
+- `POST /api/auth/test`
+- `GET /api/phonenumbers`
+- `GET /api/webphone/config`
+
+In Vercel Project Settings → Environment Variables, set the same variables as `.env.example`.
 
 ## How it works
 
