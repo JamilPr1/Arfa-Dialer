@@ -1,0 +1,343 @@
+:root {
+  --bg: #0b1220;
+  --card: rgba(255, 255, 255, 0.06);
+  --card2: rgba(255, 255, 255, 0.08);
+  --text: #eaf0ff;
+  --muted: rgba(234, 240, 255, 0.7);
+  --border: rgba(255, 255, 255, 0.12);
+  --primary: #9cff57;
+  --primary2: #7be53a;
+  --danger: #ff5c7a;
+  --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+  --radius: 16px;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+    "Segoe UI Emoji";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--text);
+  background: radial-gradient(1000px 700px at 20% 10%, rgba(156, 255, 87, 0.18), transparent 55%),
+    radial-gradient(900px 700px at 90% 20%, rgba(87, 170, 255, 0.16), transparent 60%),
+    linear-gradient(180deg, #07101f, #050815);
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 22px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(156, 255, 87, 0.18), rgba(87, 170, 255, 0.18));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.title {
+  font-weight: 750;
+}
+
+.subtitle {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.span2 {
+  grid-column: span 2;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+.card-header {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-weight: 750;
+}
+
+.card-hint {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.error {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 92, 122, 0.4);
+  background: rgba(255, 92, 122, 0.12);
+  color: #ffd7de;
+  font-family: var(--mono);
+  font-size: 12px;
+  white-space: pre-wrap;
+}
+
+.numbers {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.num {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.badge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--muted);
+}
+
+.badge.primary {
+  border-color: rgba(156, 255, 87, 0.35);
+  color: rgba(156, 255, 87, 0.9);
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+}
+
+.field span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+input {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 11px 12px;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+}
+
+select.select {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 11px 12px;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+}
+
+.webphone {
+  min-height: 320px;
+  border-radius: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+}
+
+.webphone-hidden {
+  position: fixed;
+  left: -10000px;
+  top: -10000px;
+  width: 1px;
+  height: 1px;
+  min-height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+input:focus {
+  border-color: rgba(156, 255, 87, 0.55);
+  box-shadow: 0 0 0 3px rgba(156, 255, 87, 0.12);
+}
+
+.help {
+  font-size: 12px;
+  color: rgba(234, 240, 255, 0.55);
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 14px 0;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  padding: 10px 12px;
+  font-weight: 650;
+  font-size: 13.5px;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: rgba(156, 255, 87, 0.16);
+  border-color: rgba(156, 255, 87, 0.45);
+}
+
+.btn-primary:hover {
+  background: rgba(156, 255, 87, 0.22);
+}
+
+.btn-secondary {
+  background: rgba(87, 170, 255, 0.12);
+  border-color: rgba(87, 170, 255, 0.35);
+}
+
+.dialer {
+  display: grid;
+  gap: 12px;
+}
+
+.dial-input {
+  font-size: 16px;
+  letter-spacing: 0.2px;
+}
+
+.pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.key {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 14px 12px;
+  text-align: center;
+  user-select: none;
+}
+
+.key .d {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.key .s {
+  margin-top: 2px;
+  font-size: 11px;
+  color: rgba(234, 240, 255, 0.6);
+}
+
+.key:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.log {
+  margin: 0;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  min-height: 180px;
+  max-height: 340px;
+  overflow: auto;
+  font-family: var(--mono);
+  font-size: 12px;
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .span2 {
+    grid-column: span 1;
+  }
+}
+

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arfa Dialer!</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <div class="logo">MC</div>
+          <div>
+            <div class="title">Arfa Dialer!</div>
+            <div class="subtitle">Browser calling (WebPhone)</div>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="btnRefreshNumbers" class="btn">Refresh numbers</button>
+          <button id="btnAuthTest" class="btn btn-secondary">Test auth</button>
+        </div>
+      </header>
+
+      <main class="grid">
+        <section class="card span2">
+          <div class="card-header">
+            <div class="card-title">Dial pad</div>
+            <div class="card-hint">Dial a number and press Call. (This uses the Browser Phone once started.)</div>
+          </div>
+
+          <div class="dialer">
+            <input id="dialInput" class="dial-input" placeholder="+1…" autocomplete="off" />
+            <div class="pad" id="pad"></div>
+            <div class="row">
+              <button id="btnBackspace" class="btn btn-secondary">Backspace</button>
+              <button id="btnClear" class="btn btn-secondary">Clear</button>
+              <button id="btnDialCall" class="btn btn-primary">Call</button>
+              <button id="btnDialHangup" class="btn btn-secondary">Hang up</button>
+              <div class="muted" id="webphoneState"></div>
+            </div>
+            <div class="row" style="margin-top: 8px">
+              <div class="muted" id="activeLineInfo"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card span2">
+          <div class="card-header">
+            <div class="card-title">Browser Phone</div>
+            <div class="card-hint">Pick a user slot and click Start. Then use the dial pad above for everything.</div>
+          </div>
+
+          <div class="row">
+            <label class="field" style="max-width: 260px">
+              <span>User</span>
+              <select id="agentSelect" class="select">
+                <option value="0">User 1</option>
+              </select>
+              <span class="help">For 5 simultaneous callers: each user opens the site and picks a different slot.</span>
+            </label>
+            <label class="field" style="max-width: 260px">
+              <span>App access key (optional)</span>
+              <input id="appKey" placeholder="if APP_ACCESS_KEY is set" autocomplete="off" />
+            </label>
+            <div style="flex: 1"></div>
+            <button id="btnWebPhoneInit" class="btn btn-primary">Start browser phone</button>
+            <button id="btnWebPhoneStatus" class="btn btn-secondary">Status</button>
+          </div>
+
+          <!-- Keep SDK UI offscreen; we use our own dial pad -->
+          <div id="webphoneContainer" class="webphone webphone-hidden"></div>
+        </section>
+
+        <section class="card span2">
+          <div class="card-header">
+            <div class="card-title">Activity</div>
+            <div class="card-hint">API responses/errors show here.</div>
+          </div>
+          <pre id="log" class="log"></pre>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
+
