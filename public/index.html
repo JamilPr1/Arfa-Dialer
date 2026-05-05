@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arfa Dialer!</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232563eb'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='white' font-size='16' font-family='system-ui,sans-serif' font-weight='700'%3EA%3C/text%3E%3C/svg%3E"
+    />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
@@ -48,7 +52,12 @@
         <section class="card span2">
           <div class="card-header">
             <div class="card-title">Browser Phone</div>
-            <div class="card-hint">Pick a user slot and click Start. Then use the dial pad above for everything.</div>
+            <div class="card-hint">
+              Pick a user slot and click Start. Then use the dial pad above for everything. If another computer shows
+              <code>oauth_error</code> or <code>reading 'expires'</code>, that browser is usually blocking cookies or
+              storage for <code>mightycall.com</code> (third‑party / strict privacy). Allow third‑party cookies for this
+              site, try a normal (non‑private) window, and check the system clock is correct.
+            </div>
           </div>
 
           <div class="row">
